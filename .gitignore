@@ -1,0 +1,36 @@
+# Node
+node_modules/
+frontend/dist/
+frontend/.vite/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env
+.env
+
+# Database
+*.sqlite3
+
+# Logs
+*.log
+
+# Temp test files
+test_*.py
+debug_*.py
+check_*.py

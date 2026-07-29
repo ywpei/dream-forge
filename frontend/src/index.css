@@ -1,0 +1,140 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ======== 全局基础样式 ======== */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* 确保星空背景不被页面内容遮挡 */
+  position: relative;
+}
+
+/* ======== 自定义滚动条 ======== */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0f172a; }
+::-webkit-scrollbar-thumb { background: #334155; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #475569; }
+
+/* ======== 打字机光标闪烁 ======== */
+.cursor-blink::after {
+  content: "|";
+  animation: blink 1s step-end infinite;
+  color: #818cf8;
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+/* ======== 选中文本高亮 ======== */
+::selection {
+  background: rgba(129, 140, 248, 0.3);
+  color: #f1f5f9;
+}
+
+/* ======== 标题发光效果 ======== */
+.title-glow {
+  text-shadow:
+    0 0 10px rgba(129, 140, 248, 0.3),
+    0 0 20px rgba(129, 140, 248, 0.15),
+    0 0 40px rgba(129, 140, 248, 0.1);
+}
+
+.title-glow-lg {
+  text-shadow:
+    0 0 15px rgba(129, 140, 248, 0.4),
+    0 0 30px rgba(129, 140, 248, 0.2),
+    0 0 60px rgba(129, 140, 248, 0.1),
+    0 0 120px rgba(129, 140, 248, 0.05);
+}
+
+/* ======== 微光扩散动画 ======== */
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 8px rgba(129, 140, 248, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(129, 140, 248, 0.3);
+  }
+}
+
+@keyframes glow-spread {
+  0% {
+    box-shadow: 0 0 5px rgba(129, 140, 248, 0.1);
+  }
+  100% {
+    box-shadow: 0 0 25px rgba(129, 140, 248, 0.35), 0 0 50px rgba(129, 140, 248, 0.1);
+  }
+}
+
+/* 按钮 hover 微光扩散 */
+.btn-glow {
+  transition: all 0.3s ease;
+}
+.btn-glow:hover {
+  box-shadow:
+    0 0 15px rgba(129, 140, 248, 0.3),
+    0 0 30px rgba(129, 140, 248, 0.1);
+  transform: translateY(-1px);
+}
+.btn-glow:active {
+  transform: translateY(0);
+}
+
+/* 输入框聚焦发光 */
+.input-glow {
+  transition: all 0.3s ease;
+}
+.input-glow:focus {
+  box-shadow:
+    0 0 0 1px rgba(129, 140, 248, 0.3),
+    0 0 15px rgba(129, 140, 248, 0.15),
+    0 0 30px rgba(129, 140, 248, 0.05);
+}
+
+/* 卡片 hover 发光 */
+.card-glow {
+  transition: all 0.3s ease;
+}
+.card-glow:hover {
+  box-shadow:
+    0 0 12px rgba(129, 140, 248, 0.1),
+    0 0 25px rgba(129, 140, 248, 0.05);
+}
+
+/* ======== 页面过渡 ======== */
+.page-enter {
+  opacity: 0;
+  transform: translateY(10px);
+}
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.page-exit {
+  opacity: 1;
+}
+.page-exit-active {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* ======== 呼吸光晕（用于生成中的 loading） ======== */
+@keyframes breathe-glow {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(129, 140, 248, 0.1), 0 0 20px rgba(129, 140, 248, 0.05);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(129, 140, 248, 0.3), 0 0 50px rgba(129, 140, 248, 0.1);
+    transform: scale(1.05);
+  }
+}
+
+.loading-glow {
+  animation: breathe-glow 2s ease-in-out infinite;
+}
